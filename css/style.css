@@ -1,9 +1,72 @@
-body, html {
-    height: 100%;
-    margin: 0;
+body,
+html {
+  height: 100%;
+  margin: 0;
 }
 
 #map {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+#legend {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.8); /* semi-transparent white */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* subtle shadow for depth */
+  font-family: "Arial", sans-serif; /* modern font, but you can use others like 'Roboto', 'Helvetica', etc. */
+  max-width: 250px; /* prevent the legend from becoming too wide */
+}
+
+#legend h4 {
+  text-align: center;
+  margin: 5px 0;
+  color: #333; /* dark gray color for the title */
+}
+
+#legend div {
+  margin: 5px 10px; /* spacing around each legend item */
+  font-size: 14px; /* slightly larger font for readability */
+}
+
+#legend span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: middle; /* aligns the color box with the text */
+}
+
+.leaflet-control-custom {
+    background-color: rgba(255, 255, 255, 0.9); /* slightly opaque white */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* subtle shadow for depth */
+    padding: 10px;
+    font-family: 'Arial', sans-serif;
+}
+
+.leaflet-control-custom label {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.05); /* subtle gray background */
+    transition: background-color 0.3s; /* smooth transition effect */
+}
+
+.leaflet-control-custom label:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* slightly darker on hover */
+}
+
+.leaflet-control-custom input[type="checkbox"] {
+    display: none; /* hide the default checkbox */
+}
+
+.leaflet-control-custom input[type="checkbox"]:checked + label {
+    background-color: rgba(0, 0, 0, 0.2); /* darker background for selected */
+    font-weight: bold;
 }
