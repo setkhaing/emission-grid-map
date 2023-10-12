@@ -9,64 +9,95 @@ html {
   height: 100%;
 }
 
-#legend {
+.legend {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px 15px;
+  width: 200px;
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 30px;
+  right: 30px;
   z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.8); /* semi-transparent white */
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* subtle shadow for depth */
-  font-family: "Arial", sans-serif; /* modern font, but you can use others like 'Roboto', 'Helvetica', etc. */
-  max-width: 250px; /* prevent the legend from becoming too wide */
 }
 
-#legend h4 {
-  text-align: center;
-  margin: 5px 0;
-  color: #333; /* dark gray color for the title */
+.legend h4 {
+  margin: 0;
+  padding-bottom: 10px;
+  font-weight: 600;
+  border-bottom: 2px solid #333;
+  margin-bottom: 10px;
 }
 
-#legend div {
-  margin: 5px 10px; /* spacing around each legend item */
-  font-size: 14px; /* slightly larger font for readability */
+.legend-content div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
 }
 
-#legend span {
+.legend-content span {
   display: inline-block;
   width: 20px;
   height: 20px;
-  margin-right: 5px;
-  vertical-align: middle; /* aligns the color box with the text */
+  margin-right: 10px;
+  border: 1px solid #333;
+  border-radius: 4px;
 }
-
 .leaflet-control-custom {
-    background-color: rgba(255, 255, 255, 0.9); /* slightly opaque white */
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* subtle shadow for depth */
-    padding: 10px;
-    font-family: 'Arial', sans-serif;
-}
-
-.leaflet-control-custom label {
+    background-color: rgba(255, 255, 255, 0.95); /* slightly opaque white */
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); /* subtle shadow for depth */
+    padding: 12px;
+    font-family: "Arial", sans-serif;
+    overflow: hidden; /* to ensure rounded corners for inner elements */
+  }
+  
+  .leaflet-control-custom label {
     display: inline-block;
     margin: 0 10px;
-    padding: 5px 10px;
+    padding: 6px 12px;
     cursor: pointer;
-    border-radius: 3px;
+    border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.05); /* subtle gray background */
-    transition: background-color 0.3s; /* smooth transition effect */
-}
-
-.leaflet-control-custom label:hover {
+    transition: background-color 0.3s, transform 0.3s; /* smooth transition effect */
+  }
+  
+  .leaflet-control-custom label:hover {
     background-color: rgba(0, 0, 0, 0.1); /* slightly darker on hover */
-}
-
-.leaflet-control-custom input[type="checkbox"] {
+    transform: scale(1.05); /* subtle grow effect on hover */
+  }
+  
+  .leaflet-control-custom input[type="checkbox"] {
     display: none; /* hide the default checkbox */
-}
-
-.leaflet-control-custom input[type="checkbox"]:checked + label {
+  }
+  
+  .leaflet-control-custom input[type="checkbox"]:checked + label {
     background-color: rgba(0, 0, 0, 0.2); /* darker background for selected */
     font-weight: bold;
-}
+    transform: scale(1.1); /* subtle grow effect for selected */
+  }
+  
+  .opacity-control {
+    margin-left: 50% !important;
+    transform: translateX(-50%);
+  }
+  
+  .control-group {
+    margin-bottom: 12px;
+  }
+  
+  .control-subgroup {
+    margin-left: 24px;
+    border-left: 2px solid rgba(0, 0, 0, 0.1); /* subtle line for tree structure */
+    padding-left: 12px;
+  }
+  
+  .control-label {
+    display: block;
+    margin-left: 25px;
+  }
+  
+  .control-input {
+    margin-right: 8px;
+  }
+  

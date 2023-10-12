@@ -44,7 +44,7 @@ function getColorTotal(value) {
 
 function totalEmissionStyle(feature) {
   return {
-    fillColor: getColorTotal(feature.properties.Average__1),
+    fillColor: getColorTotal(feature.properties.emission),
     fillOpacity: 0.9,
     color: "black",
     weight: 1,
@@ -72,8 +72,19 @@ function EmissionRateStyle(feature) {
 // ... [Your styles and functions]
 
 var subdistrictLayer;
+window.totalEmissionLayer = null;
+window.emissionRateLayer = null;
+window.totalEmissionMorningLayer = null;
+window.totalEmissionEveningLayer = null;
+window.totalEmissionAfternoonLayer = null;
+// ... [Your existing code]
+
+var subdistrictLayer;
 var totalEmissionLayer;
 var emissionRateLayer;
+var totalEmissionMorningLayer;
+var totalEmissionEveningLayer;
+var totalEmissionAfternoonLayer;
 
 // Load the subdistrict boundaries
 fetch("data/raw/bkk-subdistrict.geojson")
@@ -83,6 +94,15 @@ fetch("data/raw/bkk-subdistrict.geojson")
       style: styleFeature,
       onEachFeature: onEachFeature,
     }).addTo(map); // Add to map as this is a base layer
+
+    // Adjust the map view to fit the bounds of the subdistrictLayer
+    map.fitBounds(subdistrictLayer.getBounds());
+
+    // Set the minimum zoom level to the current zoom level
+    map.setMinZoom(map.getZoom());
+
+    // Set max bounds to the current bounds to prevent panning outside the initial view
+    map.setMaxBounds(map.getBounds());
 
     return fetch("data/processed/average-total-emission.geojson");
   })
@@ -102,8 +122,36 @@ fetch("data/raw/bkk-subdistrict.geojson")
       filter: filterFeatures,
     });
 
-    map.addControl(new customControl());
+    return fetch("data/processed/average-total-emission-morning.geojson");
   })
+  .then((response) => response.json())
+  .then((data) => {
+    totalEmissionMorningLayer = L.geoJSON(data, {
+      style: totalEmissionStyle,
+      filter: filterFeatures,
+    });
 
+    return fetch("data/processed/average-total-emission-evening.geojson");
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    totalEmissionEveningLayer = L.geoJSON(data, {
+      style: totalEmissionStyle,
+      filter: filterFeatures,
+    });
+
+    return fetch("data/processed/average-total-emission-afternoon.geojson");
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    totalEmissionAfternoonLayer = L.geoJSON(data, {
+      style: totalEmissionStyle,
+      filter: filterFeatures,
+    });
+
+    map.addControl(new customControl());
+
+    // Add the opacity control to the map
+    map.addControl(new layerOpacityControl());
+  })
   .catch((error) => console.error("Error loading GeoJSON data:", error));
-

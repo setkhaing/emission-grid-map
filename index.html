@@ -15,18 +15,19 @@
   </head>
   <body>
     <div id="map"></div>
+    <div id="legend" class="legend">
+      <h4>Legend</h4>
+      <div class="legend-content">
+          <!-- Content will be populated dynamically -->
+      </div>
+    </div>
+       
+
     <script src="js/leaflet-config.js"></script>
     <script src="js/main.js"></script>
     <script src="js/customControl.js"></script>
-
-    <div id="legend" style="background-color: white; padding: 10px; border: 1px solid black;">
-      <h4>LEGEND</h4>
-      <div><span style="background-color: #2b83ba; display: inline-block; width: 20px; height: 20px; margin-right: 5px;"></span> 0.001 - 0.054182</div>
-      <div><span style="background-color: #b2df8a; display: inline-block; width: 20px; height: 20px; margin-right: 5px;"></span> 0.054182 - 0.074475</div>
-      <div><span style="background-color: #fee9cd; display: inline-block; width: 20px; height: 20px; margin-right: 5px;"></span> 0.074475 - 0.103276</div>
-      <div><span style="background-color: #d75f61; display: inline-block; width: 20px; height: 20px; margin-right: 5px;"></span> 0.103276 - 0.324125</div>
-    </div>
-    
-  </div> 
+    <script src="js/layerOpacity.js"></script>
+    <script src="js/legend.js"></script>
+   
   </body>
 </html>
