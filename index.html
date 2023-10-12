@@ -6,28 +6,54 @@
     <title>Bangkok Emission Grid Map</title>
     <link
       rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet-groupedlayercontrol@latest/dist/leaflet.groupedlayercontrol.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet-groupedlayercontrol@latest/dist/leaflet.groupedlayercontrol.min.css"
+    />
     <script src="https://unpkg.com/leaflet-groupedlayercontrol@latest/dist/leaflet.groupedlayercontrol.min.js"></script>
-
   </head>
   <body>
     <div id="map"></div>
     <div id="legend" class="legend">
       <h4>Legend</h4>
       <div class="legend-content">
-          <!-- Content will be populated dynamically -->
+        <!-- Content will be populated dynamically -->
       </div>
     </div>
-       
+
+    <div id="table-container">
+      <table id="info-table">
+        <thead>
+          <tr>
+            <th>Subdistrict Name</th>
+            <th>Average Total</th>
+            <th>Average Morning</th>
+            <th>Average Afternoon</th>
+            <th>Average Evening</th>
+            <th>Emission Rate</th>
+            <th>Emission Rate Morning</th>
+            <th>Emission Rate Afternoon</th>
+            <th>Emission Rate Evening</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div id="pagination-controls">
+        <button onclick="changePage(-1)">Previous</button>
+        <span id="currentPage">1</span>
+        <button onclick="changePage(1)">Next</button>
+      </div>
+    </div>
 
     <script src="js/leaflet-config.js"></script>
     <script src="js/main.js"></script>
     <script src="js/customControl.js"></script>
     <script src="js/layerOpacity.js"></script>
     <script src="js/legend.js"></script>
-   
+    <script src="js/table.js"></script>
   </body>
 </html>

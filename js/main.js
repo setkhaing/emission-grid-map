@@ -16,7 +16,9 @@ function onEachFeature(feature, layer) {
   layer.on({
     mouseover: function (e) {
       var layer = e.target;
-      layer.bindPopup("Subdistrict: " + feature.properties.ADM3_EN).openPopup();
+      layer
+        .bindPopup("Subdistrict: " + feature.properties.subdistrict_name)
+        .openPopup();
     },
     mouseout: function (e) {
       var layer = e.target;
@@ -124,12 +126,12 @@ function EmissionRateEveningStyle(feature) {
     weight: 1,
   };
 }
-var subdistrictLayer;
+window.subdistrictLayer = null;
 window.totalEmissionLayer = null;
 window.emissionRateLayer = null;
 window.emissionRateMorningLayer = null;
 window.emissionRateAfternoonLayer = null;
-window.emissionRateAfternoonLayer = null;
+window.emissionRateEveningLayer = null;
 window.totalEmissionMorningLayer = null;
 window.totalEmissionEveningLayer = null;
 window.totalEmissionAfternoonLayer = null;

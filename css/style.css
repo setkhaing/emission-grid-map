@@ -44,60 +44,114 @@ html {
   border-radius: 4px;
 }
 .leaflet-control-custom {
-    background-color: rgba(255, 255, 255, 0.95); /* slightly opaque white */
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); /* subtle shadow for depth */
-    padding: 12px;
-    font-family: "Arial", sans-serif;
-    overflow: hidden; /* to ensure rounded corners for inner elements */
-  }
-  
-  .leaflet-control-custom label {
-    display: inline-block;
-    margin: 0 10px;
-    padding: 6px 12px;
-    cursor: pointer;
-    border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.05); /* subtle gray background */
-    transition: background-color 0.3s, transform 0.3s; /* smooth transition effect */
-  }
-  
-  .leaflet-control-custom label:hover {
-    background-color: rgba(0, 0, 0, 0.1); /* slightly darker on hover */
-    transform: scale(1.05); /* subtle grow effect on hover */
-  }
-  
-  .leaflet-control-custom input[type="checkbox"] {
-    display: none; /* hide the default checkbox */
-  }
-  
-  .leaflet-control-custom input[type="checkbox"]:checked + label {
-    background-color: rgba(0, 0, 0, 0.2); /* darker background for selected */
-    font-weight: bold;
-    transform: scale(1.1); /* subtle grow effect for selected */
-  }
-  
-  .opacity-control {
-    margin-left: 50% !important;
-    transform: translateX(-50%);
-  }
-  
-  .control-group {
-    margin-bottom: 12px;
-  }
-  
-  .control-subgroup {
-    margin-left: 24px;
-    border-left: 2px solid rgba(0, 0, 0, 0.1); /* subtle line for tree structure */
-    padding-left: 12px;
-  }
-  
-  .control-label {
-    display: block;
-    margin-left: 25px;
-  }
-  
-  .control-input {
-    margin-right: 8px;
-  }
-  
+  background-color: rgba(255, 255, 255, 0.95); /* slightly opaque white */
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); /* subtle shadow for depth */
+  padding: 12px;
+  font-family: "Arial", sans-serif;
+  overflow: hidden; /* to ensure rounded corners for inner elements */
+}
+
+.leaflet-control-custom label {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.05); /* subtle gray background */
+  transition: background-color 0.3s, transform 0.3s; /* smooth transition effect */
+}
+
+.leaflet-control-custom label:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* slightly darker on hover */
+  transform: scale(1.05); /* subtle grow effect on hover */
+}
+
+.leaflet-control-custom input[type="checkbox"] {
+  display: none; /* hide the default checkbox */
+}
+
+.leaflet-control-custom input[type="checkbox"]:checked + label {
+  background-color: rgba(0, 0, 0, 0.2); /* darker background for selected */
+  font-weight: bold;
+  transform: scale(1.1); /* subtle grow effect for selected */
+}
+
+.opacity-control {
+  margin-left: 50% !important;
+  transform: translateX(-50%);
+}
+
+.control-group {
+  margin-bottom: 12px;
+}
+
+.control-subgroup {
+  margin-left: 24px;
+  border-left: 2px solid rgba(0, 0, 0, 0.1); /* subtle line for tree structure */
+  padding-left: 12px;
+}
+
+.control-label {
+  display: block;
+  margin-left: 25px;
+}
+
+.control-input {
+  margin-right: 8px;
+}
+
+#table-container {
+  position: absolute;
+  bottom: 10%; /* Adjust this to move the table up or down */
+  left: 50%;
+  transform: translateX(-50%); /* This centers the table horizontally */
+  z-index: 1000;
+  overflow: auto;
+  max-height: 300px; /* Adjust this if needed */
+  width: 60%; /* Adjust this if you want a wider or narrower table */
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#info-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#info-table th,
+#info-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#info-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#info-table tr:hover {
+  background-color: #ddd;
+}
+
+#info-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4caf50;
+  color: white;
+}
+
+#pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#pagination-controls button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+}
