@@ -69,22 +69,70 @@ function EmissionRateStyle(feature) {
     weight: 1,
   };
 }
-// ... [Your styles and functions]
 
+// Average emission rate - morning
+function getColorRateMorning(value) {
+  if (value === null) return "#CCCCCC"; // Gray color for null values
+  if (value >= 0.12057 && value <= 0.163664) return "#2b83ba";
+  if (value > 0.163664 && value <= 0.177743) return "#b2df8a";
+  if (value > 0.177743 && value <= 0.189942) return "#fee9cd";
+  if (value > 0.189942 && value <= 0.22702) return "#d75f61";
+  return "#FFFFFF"; // Default color if none of the conditions are met
+}
+
+function EmissionRateMorningStyle(feature) {
+  return {
+    fillColor: getColorRateMorning(feature.properties.Average__1),
+    fillOpacity: 0.9,
+    color: "black",
+    weight: 1,
+  };
+}
+// Average emission rate - afternoon
+function getColorRateAfternoon(value) {
+  if (value === null) return "#CCCCCC"; // Gray color for null values
+  if (value >= 0.124464 && value <= 0.165166) return "#2b83ba";
+  if (value > 0.165166 && value <= 0.17968) return "#b2df8a";
+  if (value > 0.17968 && value <= 0.191141) return "#fee9cd";
+  if (value > 0.191141 && value <= 0.22702) return "#d75f61";
+  return "#FFFFFF"; // Default color if none of the conditions are met
+}
+
+function EmissionRateAfternoonStyle(feature) {
+  return {
+    fillColor: getColorRateAfternoon(feature.properties.Average__1),
+    fillOpacity: 0.9,
+    color: "black",
+    weight: 1,
+  };
+}
+// Average emission rate -evening
+function getColorRateEvening(value) {
+  if (value === null) return "#CCCCCC"; // Gray color for null values
+  if (value >= 0.125762 && value <= 0.163584) return "#2b83ba";
+  if (value > 0.163584 && value <= 0.177301) return "#b2df8a";
+  if (value > 0.177301 && value <= 0.190289) return "#fee9cd";
+  if (value > 0.190289 && value <= 0.22702) return "#d75f61";
+  return "#FFFFFF"; // Default color if none of the conditions are met
+}
+
+function EmissionRateEveningStyle(feature) {
+  return {
+    fillColor: getColorRateEvening(feature.properties.Average__1),
+    fillOpacity: 0.9,
+    color: "black",
+    weight: 1,
+  };
+}
 var subdistrictLayer;
 window.totalEmissionLayer = null;
 window.emissionRateLayer = null;
+window.emissionRateMorningLayer = null;
+window.emissionRateAfternoonLayer = null;
+window.emissionRateAfternoonLayer = null;
 window.totalEmissionMorningLayer = null;
 window.totalEmissionEveningLayer = null;
 window.totalEmissionAfternoonLayer = null;
-// ... [Your existing code]
-
-var subdistrictLayer;
-var totalEmissionLayer;
-var emissionRateLayer;
-var totalEmissionMorningLayer;
-var totalEmissionEveningLayer;
-var totalEmissionAfternoonLayer;
 
 // Load the subdistrict boundaries
 fetch("data/raw/bkk-subdistrict.geojson")
@@ -149,6 +197,30 @@ fetch("data/raw/bkk-subdistrict.geojson")
       filter: filterFeatures,
     });
 
+    return fetch("data/processed/average-emission-rate-morning.geojson");
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    emissionRateMorningLayer = L.geoJSON(data, {
+      style: EmissionRateMorningStyle,
+      filter: filterFeatures,
+    });
+    return fetch("data/processed/average-emission-rate-afternoon.geojson");
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    emissionRateAfternoonLayer = L.geoJSON(data, {
+      style: EmissionRateAfternoonStyle,
+      filter: filterFeatures,
+    });
+    return fetch("data/processed/average-emission-rate-evening.geojson");
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    emissionRateEveningLayer = L.geoJSON(data, {
+      style: EmissionRateEveningStyle,
+      filter: filterFeatures,
+    });
     map.addControl(new customControl());
 
     // Add the opacity control to the map

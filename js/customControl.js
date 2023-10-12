@@ -18,7 +18,11 @@ var customControl = L.Control.extend({
     );
 
     // Total Emission
-    var totalEmissionCheckbox = L.DomUtil.create("input", "", totalEmissionGroup);
+    var totalEmissionCheckbox = L.DomUtil.create(
+      "input",
+      "",
+      totalEmissionGroup
+    );
     totalEmissionCheckbox.type = "checkbox";
     totalEmissionCheckbox.id = "totalEmissionCheckbox";
     totalEmissionCheckbox.checked = false;
@@ -38,12 +42,20 @@ var customControl = L.Control.extend({
     emissionRateLabel.innerHTML = "Emission Rate";
 
     // Total Emission Morning
-    var totalEmissionMorningCheckbox = L.DomUtil.create("input", "", totalEmissionGroup);
+    var totalEmissionMorningCheckbox = L.DomUtil.create(
+      "input",
+      "",
+      totalEmissionGroup
+    );
     totalEmissionMorningCheckbox.type = "checkbox";
     totalEmissionMorningCheckbox.id = "totalEmissionMorningCheckbox";
     totalEmissionMorningCheckbox.checked = false;
 
-    var totalEmissionMorningLabel = L.DomUtil.create("label", "", totalEmissionGroup);
+    var totalEmissionMorningLabel = L.DomUtil.create(
+      "label",
+      "",
+      totalEmissionGroup
+    );
     totalEmissionMorningLabel.htmlFor = "totalEmissionMorningCheckbox";
     totalEmissionMorningLabel.innerHTML = "Total Emission Morning";
 
@@ -57,19 +69,65 @@ var customControl = L.Control.extend({
     totalEmissionAfternoonCheckbox.id = "totalEmissionAfternoonCheckbox";
     totalEmissionAfternoonCheckbox.checked = false;
 
-    var totalEmissionAfternoonLabel = L.DomUtil.create("label", "", totalEmissionGroup);
+    var totalEmissionAfternoonLabel = L.DomUtil.create(
+      "label",
+      "",
+      totalEmissionGroup
+    );
     totalEmissionAfternoonLabel.htmlFor = "totalEmissionAfternoonCheckbox";
     totalEmissionAfternoonLabel.innerHTML = "Total Emission Afternoon";
 
     // Total Emission Evening
-    var totalEmissionEveningCheckbox = L.DomUtil.create("input", "", totalEmissionGroup);
+    var totalEmissionEveningCheckbox = L.DomUtil.create(
+      "input",
+      "",
+      totalEmissionGroup
+    );
     totalEmissionEveningCheckbox.type = "checkbox";
     totalEmissionEveningCheckbox.id = "totalEmissionEveningCheckbox";
     totalEmissionEveningCheckbox.checked = false;
 
-    var totalEmissionEveningLabel = L.DomUtil.create("label", "", totalEmissionGroup);
+    var totalEmissionEveningLabel = L.DomUtil.create(
+      "label",
+      "",
+      totalEmissionGroup
+    );
     totalEmissionEveningLabel.htmlFor = "totalEmissionEveningCheckbox";
     totalEmissionEveningLabel.innerHTML = "Total Emission Evening";
+
+    // Emission Rate Morning
+    var emissionRateMorningCheckbox = L.DomUtil.create("input", "", container);
+    emissionRateMorningCheckbox.type = "checkbox";
+    emissionRateMorningCheckbox.id = "emissionRateMorningCheckbox";
+    emissionRateMorningCheckbox.checked = false;
+
+    var emissionRateMorningLabel = L.DomUtil.create("label", "", container);
+    emissionRateMorningLabel.htmlFor = "emissionRateMorningCheckbox";
+    emissionRateMorningLabel.innerHTML = "Emission Rate Morning";
+
+    // Emission Rate Afternoon
+    var emissionRateAfternoonCheckbox = L.DomUtil.create(
+      "input",
+      "",
+      container
+    );
+    emissionRateAfternoonCheckbox.type = "checkbox";
+    emissionRateAfternoonCheckbox.id = "emissionRateAfternoonCheckbox";
+    emissionRateAfternoonCheckbox.checked = false;
+
+    var emissionRateAfternoonLabel = L.DomUtil.create("label", "", container);
+    emissionRateAfternoonLabel.htmlFor = "emissionRateAfternoonCheckbox";
+    emissionRateAfternoonLabel.innerHTML = "Emission Rate Afternoon";
+
+    // Emission Rate Evening
+    var emissionRateEveningCheckbox = L.DomUtil.create("input", "", container);
+    emissionRateEveningCheckbox.type = "checkbox";
+    emissionRateEveningCheckbox.id = "emissionRateEveningCheckbox";
+    emissionRateEveningCheckbox.checked = false;
+
+    var emissionRateEveningLabel = L.DomUtil.create("label", "", container);
+    emissionRateEveningLabel.htmlFor = "emissionRateEveningCheckbox";
+    emissionRateEveningLabel.innerHTML = "Emission Rate Evening";
 
     // Deselect all checkboxes
     function deselectAllCheckboxes() {
@@ -78,14 +136,22 @@ var customControl = L.Control.extend({
       totalEmissionMorningCheckbox.checked = false;
       totalEmissionAfternoonCheckbox.checked = false;
       totalEmissionEveningCheckbox.checked = false;
+      emissionRateMorningCheckbox.checked = false;
+      emissionRateAfternoonCheckbox.checked = false;
+      emissionRateEveningCheckbox.checked = false;
+
       // Add other checkboxes here if needed
     }
     var layerMapping = {
       totalEmissionCheckbox: totalEmissionLayer,
       emissionRateCheckbox: emissionRateLayer,
+      emissionRateMorningCheckbox: emissionRateMorningLayer,
+      emissionRateAfternoonCheckbox: emissionRateAfternoonLayer,
+      emissionRateEveningCheckbox: emissionRateEveningLayer,
       totalEmissionMorningCheckbox: totalEmissionMorningLayer,
       totalEmissionAfternoonCheckbox: totalEmissionAfternoonLayer,
       totalEmissionEveningCheckbox: totalEmissionEveningLayer,
+
       // Add other layers here if needed
     };
 
@@ -124,6 +190,18 @@ var customControl = L.Control.extend({
 
     L.DomEvent.on(totalEmissionEveningCheckbox, "change", function () {
       handleLayerChange("totalEmissionEveningCheckbox", "totalEmission");
+    });
+
+    L.DomEvent.on(emissionRateMorningCheckbox, "change", function () {
+      handleLayerChange("emissionRateMorningCheckbox", "emissionRate");
+    });
+
+    L.DomEvent.on(emissionRateAfternoonCheckbox, "change", function () {
+      handleLayerChange("emissionRateAfternoonCheckbox", "emissionRate");
+    });
+
+    L.DomEvent.on(emissionRateEveningCheckbox, "change", function () {
+      handleLayerChange("emissionRateEveningCheckbox", "emissionRate");
     });
 
     // ... [Any other checkboxes you have]

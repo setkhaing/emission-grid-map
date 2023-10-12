@@ -1,7 +1,7 @@
 // Layer Opacity Control
 var layerOpacityControl = L.Control.extend({
   options: {
-    //position: "bottomleft", // Changed to a default position
+    position: "bottomleft", // Changed to a default position
   },
 
   onAdd: function (map) {
@@ -34,6 +34,24 @@ var layerOpacityControl = L.Control.extend({
         window.emissionRateLayer
       ) {
         window.emissionRateLayer.setStyle({ fillOpacity: value / 100 });
+      }
+      if (
+        document.getElementById("totalEmissionMorningCheckbox").checked &&
+        window.totalEmissionMorningLayer 
+      ) {
+        window.totalEmissionMorningLayer.setStyle({ fillOpacity: value / 100 });
+      }
+      if (
+        document.getElementById("totalEmissionAfternoonCheckbox").checked &&
+        window.totalEmissionAfternoonLayer 
+      ) {
+        window.totalEmissionAfternoonLayer.setStyle({ fillOpacity: value / 100 });
+      }
+      if (
+        document.getElementById("totalEmissionEveningCheckbox").checked &&
+        window.totalEmissionEveningLayer 
+      ) {
+        window.totalEmissionEveningLayer.setStyle({ fillOpacity: value / 100 });
       }
     });
 
