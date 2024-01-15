@@ -33,14 +33,14 @@ function filterFeatures(feature) {
   return feature.properties.Average__1 !== null;
 }
 
-// Average total emission
+// Average emission per grid
 
 function getColorTotal(value) {
   if (value === null) return "#CCCCCC"; // Gray color for null values
-  if (value >= 0.001 && value <= 0.054182) return "#2b83ba";
-  if (value > 0.054182 && value <= 0.074475) return "#b2df8a";
-  if (value > 0.074475 && value <= 0.103276) return "#fee9cd";
-  if (value > 0.103276 && value <= 0.324125) return "#d75f61";
+  if (value >= 0.001333 && value <= 0.079878) return "#2b83ba";
+  if (value > 0.079878 && value <= 0.104576) return "#b2df8a";
+  if (value > 0.104576 && value <= 0.136991) return "#fee9cd";
+  if (value > 0.136991 && value <= 0.726017) return "#d75f61";
   return "#FFFFFF"; // Default color if none of the conditions are met
 }
 
@@ -56,10 +56,10 @@ function totalEmissionStyle(feature) {
 // Average emission rate
 function getColorRate(value) {
   if (value === null) return "#CCCCCC"; // Gray color for null values
-  if (value >= 0.12057 && value <= 0.150635) return "#2b83ba";
-  if (value > 0.150635 && value <= 0.165354) return "#b2df8a";
-  if (value > 0.165354 && value <= 0.180441) return "#fee9cd";
-  if (value > 0.180441 && value <= 0.22702) return "#d75f61";
+  if (value >= 0.12057 && value <= 0.152443) return "#2b83ba";
+  if (value > 0.152443 && value <= 0.164997) return "#b2df8a";
+  if (value > 0.164997 && value <= 0.177230) return "#fee9cd";
+  if (value > 0.177230 && value <= 0.22702) return "#d75f61";
   return "#FFFFFF"; // Default color if none of the conditions are met
 }
 
@@ -75,10 +75,10 @@ function EmissionRateStyle(feature) {
 // Average emission rate - morning
 function getColorRateMorning(value) {
   if (value === null) return "#CCCCCC"; // Gray color for null values
-  if (value >= 0.12057 && value <= 0.163664) return "#2b83ba";
-  if (value > 0.163664 && value <= 0.177743) return "#b2df8a";
-  if (value > 0.177743 && value <= 0.189942) return "#fee9cd";
-  if (value > 0.189942 && value <= 0.22702) return "#d75f61";
+  if (value >= 0.12057 && value <= 0.152443) return "#2b83ba";
+  if (value > 0.152443 && value <= 0.164997) return "#b2df8a";
+  if (value > 0.164997 && value <= 0.177230) return "#fee9cd";
+  if (value > 0.177230 && value <= 0.22702) return "#d75f61";
   return "#FFFFFF"; // Default color if none of the conditions are met
 }
 
@@ -93,10 +93,10 @@ function EmissionRateMorningStyle(feature) {
 // Average emission rate - afternoon
 function getColorRateAfternoon(value) {
   if (value === null) return "#CCCCCC"; // Gray color for null values
-  if (value >= 0.124464 && value <= 0.165166) return "#2b83ba";
-  if (value > 0.165166 && value <= 0.17968) return "#b2df8a";
-  if (value > 0.17968 && value <= 0.191141) return "#fee9cd";
-  if (value > 0.191141 && value <= 0.22702) return "#d75f61";
+  if (value >= 0.12057 && value <= 0.152443) return "#2b83ba";
+  if (value > 0.152443 && value <= 0.164997) return "#b2df8a";
+  if (value > 0.164997 && value <= 0.177230) return "#fee9cd";
+  if (value > 0.177230 && value <= 0.22702) return "#d75f61";
   return "#FFFFFF"; // Default color if none of the conditions are met
 }
 
@@ -111,10 +111,10 @@ function EmissionRateAfternoonStyle(feature) {
 // Average emission rate -evening
 function getColorRateEvening(value) {
   if (value === null) return "#CCCCCC"; // Gray color for null values
-  if (value >= 0.125762 && value <= 0.163584) return "#2b83ba";
-  if (value > 0.163584 && value <= 0.177301) return "#b2df8a";
-  if (value > 0.177301 && value <= 0.190289) return "#fee9cd";
-  if (value > 0.190289 && value <= 0.22702) return "#d75f61";
+  if (value >= 0.12057 && value <= 0.152443) return "#2b83ba";
+  if (value > 0.152443 && value <= 0.164997) return "#b2df8a";
+  if (value > 0.164997 && value <= 0.177230) return "#fee9cd";
+  if (value > 0.177230 && value <= 0.22702) return "#d75f61";
   return "#FFFFFF"; // Default color if none of the conditions are met
 }
 
